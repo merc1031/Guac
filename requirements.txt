@@ -1,0 +1,2 @@
+-e git+https://github.com/cloudpipe/cloudpickle.git@61761935ff0b101784534747679ce88a1c9d617a#egg=cloudpickle
+-e git+https://github.com/llllllllll/cloudpickle-generators.git@b5d3bf57ab1480e89db8d318ca553398e4f1eac7#egg=cloudpickle-generators

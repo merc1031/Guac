@@ -1,4 +1,8 @@
 import abc, copy, inspect
+import cloudpickle
+import cloudpickle_generators
+
+cloudpickle_generators.register()
 
 class Monad(metaclass=abc.ABCMeta):  
     """An abstract class whose subclasses represent monad instances."""
@@ -37,7 +41,7 @@ class Monad(metaclass=abc.ABCMeta):
             if isinstance(monadic_value, Monad._Builtin):
                 monadic_value = monadic_value.evaluate_in_monad(self)
             def proceed(x):
-                invocation = copy.deepcopy(continuation) # Requires Pypy!
+                invocation = cloudpickle.loads(cloudpickle.dumps(continuation))
                 try:
                     return step(invocation.send(x), invocation)
                 except StopIteration as e:
